@@ -1,0 +1,42 @@
+<%inherit file="/bios/base.html" />
+
+
+<div class="feature">${c.composer.imagetag() | n}<br />${c.composer.fullname()}</div>
+
+
+
+${c.bio | n}
+
+<p>${c.composer.firstname} has 
+<a href="/composer/list/${c.composer.id}">${c.numpublications} publication${'s' if c.numpublications > 1 else ''}</a> 
+in the catalog.</p>
+
+% if c.composer.website or c.composer.email:
+<div class="feature">
+<p>Web address<br /><a href="${c.composer.website}">${c.composer.website}</a></p>
+<p>email<br /><a href="mailto:${c.composer.email}">${c.composer.email}</a></p>
+</div>
+% endif
+
+% if c.featured_works:
+<div class="feature">
+<p>Featured Works</p>
+% for work in c.featured_works:
+<p>  <a href="/catalog/workdetail/${work.id}">${work.liststring()}</a><br />${work.blurb}</p>
+% endfor
+</div>
+% endif
+
+% if c.featured_publications:
+<div class="feature">
+<p>Featured Publications</p>
+% for work in c.featured_publications:
+<p>  <a href="/catalog/publicationdetail/${work.id}">${work.liststring()}</a><br />${work.blurb}</p>
+% endfor
+</div>
+% endif
+
+
+
+
+

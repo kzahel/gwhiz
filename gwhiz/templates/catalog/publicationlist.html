@@ -1,0 +1,19 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>Viewing by Composer: <a class="tooltip" href="/bios/view/${c.composer.id}">${c.composer.fullname()}<span>click for biography ${c.composer.imagetag() | n}</span></a></h2>
+
+
+
+
+
+% if c.publications:
+Publications:
+<table>
+% for pub in c.publications:
+<tr><td>${h.link_to(pub.liststring(), h.url_for(controller='catalog', action='publicationdetail',id=pub.id ))}
+ (${' '.join([ style.name for style in pub.getstyles() ])})</td><td>${pub.catalog_number}</td></tr>
+
+% endfor
+</table>
+% endif
+

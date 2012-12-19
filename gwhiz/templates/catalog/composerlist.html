@@ -1,0 +1,50 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>Publications by <a class="tooltip" href="/bios/view/${c.composer.id}">${c.composer.fullname()}<span>click for biography ${c.composer.imagetag() | n}</span></a></h2>
+
+
+
+% if c.publications:
+<table>
+<tr>
+  <th>Title</th><th>Style(s)</th><th>Price</th><th>Catalog Number</th>
+</tr>
+% for pub in c.publications:
+<tr>
+  <td>${h.link_to(pub.liststring(), h.url_for(controller='catalog', action='publicationdetail',id=pub.id ))}</td>
+  <td>
+    % for style in pub.getstyles():
+     ${ h.link_to(style.name, h.url_for(controller='style',action='list',id=style.id) )} 
+    % endfor
+  </td>
+  <td>$${pub.getprice()}</td>
+  <td>${pub.catalog_number}</td>
+</tr>
+
+% endfor
+</table>
+% endif
+
+<%doc>
+% if c.publications:
+Publications:
+
+( <a href="${h.url_for(controller='composer', action='publications',id=c.composer.id)}">With Catalog Numbers</a> )
+
+<ul>
+% for pub in c.publications:
+<li>${h.link_to(pub.liststring(), h.url_for(controller='catalog', action='publicationdetail',id=pub.id ))}
+ (${' '.join([ style.name for style in pub.getstyles() ])})
+</li>
+% endfor
+</ul>
+% endif
+</%doc>
+
+% if c.actions:
+<div id="info">
+% for action in c.actions:
+${h.link_to(action[0], action[1])}
+% endfor
+</div>
+% endif

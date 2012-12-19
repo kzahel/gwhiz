@@ -1,0 +1,24 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>${c.info}
+% if hasattr(c.cat,'imagetag'):
+<div class="feature">
+ ${c.cat.imagetag() | n}
+</div>
+% endif
+</h2>
+
+<ul>
+% for work in c.publications:
+<li>${h.link_to(work.liststring(), h.url_for(controller='catalog', action='publicationdetail',id=work.id ))}</li>
+% endfor
+</ul>
+
+
+% if c.actions:
+<div id="info">
+% for action in c.actions:
+${h.link_to(action[0], action[1])}
+% endfor
+</div>
+% endif

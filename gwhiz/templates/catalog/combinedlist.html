@@ -1,0 +1,29 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>${c.info}
+% if hasattr(c.cat,'imagetag'):
+ ${c.cat.imagetag() | n}
+% endif
+</h2>
+
+<h2>Works:</h2>
+<ul>
+% for work in c.works:
+<li>${h.link_to(work.liststring(), h.url_for(controller='catalog', action='workdetail',id=work.id ))}</li>
+% endfor
+</ul>
+<h2>Movements:</h2>
+<ul>
+% for work in c.movements:
+<li>${h.link_to(work.liststring() + ' ('+work.work.liststring()+')', h.url_for(controller='catalog', action='movementdetail',id=work.id ))}</li>
+% endfor
+</ul>
+</h2>
+
+% if c.actions:
+<div id="info">
+% for action in c.actions:
+${h.link_to(action[0], action[1])}
+% endfor
+</div>
+% endif

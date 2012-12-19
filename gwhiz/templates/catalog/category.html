@@ -1,0 +1,20 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>Publications by ${c.type}</h2>
+
+<ul>
+% for n,cat in enumerate(c.categories):
+% if c.numincat[n] > 0:
+<li><a class="popupimage" href="/${c.controller}/list/${cat.id}">${cat.liststring()} (${c.numincat[n]})
+
+% if hasattr(cat,'imagetag'):
+<span><div class="greybox">${cat.imagetag() | n}</div></span>
+% endif
+
+</a></li>
+
+% endif
+% endfor
+</ul>
+
+

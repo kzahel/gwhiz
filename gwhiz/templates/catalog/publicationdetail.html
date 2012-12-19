@@ -1,0 +1,132 @@
+<%inherit file="/catalog/base.html" />
+
+<p>Items in this 
+% if c.publication.type == 'album':
+album
+% else:
+publication
+% endif
+(Catalog Number ${c.publication.catalog_number}):</p>
+% if c.publication.works:
+<!-- begin works -->
+% for work in c.publication.works:
+<div class="workdetail" style="margin-top:1em">
+
+  <p><span class="worktitle"><a href="/catalog/publicationdetail/${work.publications[0].id}">${work.publications[0].gettitle()}</a></span> composed by ${h.link_to(work.composer.fullname(), h.url_for(controller='composer',action='list',id=work.composer.id))} (<a href="/bios/view/${work.composer.id}">Bio</a>)</p>
+  
+  % if work.instruments:
+  written for 
+  <div class="instrumentation">
+    <ul>
+      % for instrument in work.instruments:
+      <li><a href="/instrument/list/${instrument.id}" class="instrumentimage">${instrument.name}<span class="instrumentimage feature">${instrument.imagetag() | n}</span></a></li>
+      % endfor
+    </ul>
+  </div>
+  % endif
+  
+  % if work.key:
+  in the key of 
+  <ul><li>
+      <a class="instrumentimage"  href="/key/list/${work.key.id}">${work.key.name}<span class="feature" style="background:#fff">${work.key.imagetag() | n}</span></a>
+  </li></ul>
+  % endif
+  
+  % if work.movements:
+  in ${len(work.movements)} movements
+  <ul>
+    % for movement in work.movements:
+    <li><span class="movementtitle">${h.link_to(movement.liststring(), h.url_for(controller='catalog',action='movementdetail',id=movement.id))} </span>  
+      % if movement.soundclips:
+      <ul>
+	% for soundclip in movement.soundclips:
+	<li><a href="${soundclip.path}" type="audio/mpeg"></a>(Audio Sample)</li>
+	% endfor
+      </ul>
+      % endif
+    </li>  
+    % endfor
+  </ul>
+  % endif
+  
+  % if work.styles:
+  in the style
+  <ul>
+    % for style in work.styles:
+    <li>${ h.link_to(style.name, h.url_for(controller='style',action='list',id=style.id) )}</li>
+    % endfor
+  </ul>
+  % endif
+    
+  % if work.soundclips:
+  soundclips:
+  <ul>
+    % for soundclip in work.soundclips:
+    <li><a href="${soundclip.path}" type="audio/mpeg"></a>(Audio Sample)</li>
+    % endfor
+  </ul>
+  % endif
+  
+  % if work.image:
+  <img src =${work.image} alt="work.title">
+  % endif
+  % if work.description:
+  ${work.description | n}
+  % endif
+
+</div>
+<div style="clear:both"></div>
+% endfor
+
+
+% endif
+<!-- end -->
+
+% if c.publication.movements:
+% for movement in c.publication.movements:
+${movement.title} - movement
+% endfor
+% endif
+
+
+<div class="feature" style="margin-top:6em;">
+% if c.publication.image:
+<img src =${c.publication.image} alt="c.publication.gettitle()"><br>
+% endif
+% if c.publication.website:
+<a href="${c.publication.website}">Website</a>
+% endif
+</div>
+
+
+
+% if c.publication.description:
+${c.publication.description | n}
+% endif
+
+
+
+<div class="addtocart transblack rounded shadowborder">
+% if c.publication.type == 'album':
+  Album Price: $${c.publication.getprice()}
+% else:
+  Sheet Music Price: $${c.publication.getprice()}
+% endif
+
+<ul>
+% if c.publication in c.cart:
+<li>${h.link_to('Add another to Cart', h.url_for( controller='catalog',action='addtocart',id=c.publication.cartstring() ))}</li>
+% else:
+<li>${h.link_to('Add to Cart', h.url_for( controller='catalog',action='addtocart',id=c.publication.cartstring() ))}</li>
+% endif
+% if c.publication in c.cart:
+<li>${h.link_to('Remove from Cart', h.url_for( controller='catalog',action='removefromcart',id=c.publication.cartstring() ))}</li>
+% endif
+
+% if c.publication in c.cart:
+<li>${h.link_to('Checkout', url(controller='catalog',action='checkout' ) )}</li>
+% else:
+<li>${h.link_to('Buy Now', h.url_for( controller='catalog',action='checkout_with',id=c.publication.cartstring() ))}</li>
+% endif
+</ul>
+</div>

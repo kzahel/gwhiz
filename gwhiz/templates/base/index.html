@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC
+"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN" xml:lang="EN" dir="ltr">
+
+<head>
+<title>GWhiz Arts &amp; Sciences</title>
+${h.stylesheet_link(h.url_for('/css/new.css'))}
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+
+<script type="text/javascript" src="/js"></script>
+<script type="text/javascript" src="/prototype.js"></script>
+
+<%doc>
+<script type="text/javascript">
+function callback(content) {
+}
+
+function emacsclient(filename) {
+  var url = '/emacsclient/'+filename;
+  new Ajax.Request(url);
+}
+
+</script>
+</%doc>
+
+
+<div class="globalwrap">
+  <div class="insideglobalwrap bluedash">
+    <div class="header greendash clear">
+      <div class="logo rounded transblack shadowborder"><h1>GWhiz Arts &amp; Sciences</h1></div>
+      <div class="cart rounded transblack shadowborder">${self.cart()}</div>
+    </div>
+    <div class="nav magentadash">
+      ${self.sections()}
+    </div>
+    
+    <div class="sc"><div class="s9"><div class="s8"><div class="s7"><div class="s6"><div class="s5"><div class="s4"><div class="s3"><div class="s2"><div class="s1">
+		      
+		      <div class="contentfooter">
+			<div class="subnav roundedtop ${c.current_section} ">
+			  ${self.subsections()}
+			</div>
+			<div class="outsidecontent">
+			  <div class="content transblack reddash clear">
+			    % if c.current_sectiontitle:
+			      <h1>${c.current_sectiontitle}</h1>
+			    % endif
+			    ${next.body()}
+
+			    <!--<div style="float:right">[edit]</div>-->
+			  </div>
+			</div>
+			
+			<div class="footer">
+			  Copyright &copy; GWhiz Arts &amp; Sciences 2010
+
+
+<%doc>
+<span onclick="emacsclient('${self.filename.replace('/','@')}')" style="border:1px solid green">template</span>
+<span onclick="emacsclient('${c.controllerfile.replace('/','@')}')" style="border:1px solid green">controller</span>
+<span onclick="emacsclient('${"/home/kgraehl/gwhiz.com/lib/base.py".replace('/','@')}')" style="border:1px solid red">base controller</span>
+<span onclick="emacsclient('${"/home/kgraehl/gwhiz.com/public/css/new.css".replace('/','@')}')" style="border:1px solid red">css</span>
+<span onclick="emacsclient('${"/home/kgraehl/gwhiz.com/templates/base/index.html".replace('/','@')}')" style="border:1px solid red">base template</span>
+<span onclick="emacsclient('${"/home/kgraehl/gwhiz.com/model/__init__.py".replace('/','@')}')" style="border:1px solid blue">model defns</span>
+<span onclick="emacsclient('${"/home/kgraehl/gwhiz.com/gwhiz/websetup.py".replace('/','@')}')" style="border:1px solid blue">model init</span>
+</%doc>
+
+
+
+			</div>
+
+		      </div>
+		      
+
+  </div></div></div></div></div></div></div></div></div></div></div>
+
+
+  
+</div>
+
+<iframe title="Online Translation Powered by Applied Language Solution" src="http://www.appliedlanguage.com/translate.aspx?sourcel=en&iindex=1&col=&temp=Z3JhZWhsLmR5bmRucy5vcmc="scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="width: 220px;height: 70px;"></iframe>
+
+<p><script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=0929d8f2-d48e-4a0a-8edc-7229edcfc813&amp;type=website&amp;style=rotate&amp;post_services=facebook%2Cmyspace%2Ctwitter"></script></p>
+
+</body>
+</html>
+
+<%def name="sections()">
+<ul>
+% for section,sectiontitle in c.sections:
+% if section.lower() == c.current_section:
+ <li class="nav roundedtop current"><a href="/${section.lower()}">${section}</a></li>
+% else:
+ <li class="nav roundedtop"><a href="/${section.lower()}">${section}</a></li>
+% endif
+% endfor
+</ul>
+</%def>
+
+<%def name="subsections()">
+% if hasattr(c,'subsections') and c.subsections:
+<ul>
+% for k,v in c.subsections.items():
+ <li class="rounded"><a href="/${c.current_section}/${v}">${k}</a></li>
+% endfor
+</ul>
+% endif
+
+
+</%def>
+
+<%def name="cart()">
+<ul>
+<li>${h.link_to('Login', h.url_for(controller='auth',action='private') )}</li>
+% if c.cart:
+<li>Cart:
+<ul>
+% for item in c.cart:
+  <li>${h.link_to(item.gettitle(), h.url_for(controller='catalog',action='%sdetail'%item.__class__.__name__.lower(),id=item.id))} 
+${h.link_to('x',h.url_for(controller='catalog',action='removefromcart',id=item.cartstring() ) ) }
+</li>
+% endfor
+</ul>
+</li>
+% endif
+
+% if c.cart:
+<li>${h.link_to('Checkout', url(controller='catalog',action='checkout' ) )}</li>
+% endif
+</ul>
+</%def>
+
+

@@ -1,0 +1,72 @@
+## -*- coding: utf-8 -*-
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>${self.title()}</title>
+    ${self.head()}
+</head>
+<body>
+<div class="header">
+  <div class="wrapper clear">
+    <div class="top_nav">
+      ${self.tabs()}
+    </div>
+    ${self.header()}
+    <div class="main_nav">
+      ${self.menu()}
+    </div>
+    <div class="sub_nav">
+      ${self.subnav()}
+    </div>
+
+  </div>
+</div>
+    ${self.heading()}
+    ${self.breadcrumbs()}
+    ${next.body()}
+    ${self.footer()}
+</body>
+</html>
+
+<%def name="title()">Gwhiz Arts &amp; Sciences</%def>
+
+<%def name="head()">
+<!--     ${h.stylesheet_link(h.url_for('/css/main.css'))} -->
+</%def>
+
+<%def name="header()">
+
+<!-- <img src="/swoosh.png"> -->
+Gwhiz Arts &amp; Sciences
+
+</%def>
+<%def name="tabs()">
+
+<ul>
+<li>Login</li>
+</ul>
+
+</%def>
+<%def name="menu()">
+
+<ul>
+<li class="home current"><a href="">Home</a></li>
+<li><a href="">About</a></li>
+<li>Catalog</li>
+<li>Bios</li>
+<li>Contact</li>
+</ul>
+
+</%def>
+
+<%def name="subnav()">
+			<ul>
+				<li><a href="">subnav</a></li>
+			</ul>
+</%def>
+
+<%def name="heading()"><h1>${c.heading or 'No Title'}</h1></%def>
+<%def name="breadcrumbs()"></%def>
+<%def name="footer()">Copyright &copy; Gwhiz Arts &amp; Sciences 2009</%def>

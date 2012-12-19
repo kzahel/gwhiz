@@ -1,0 +1,97 @@
+<%inherit file="/catalog/base.html" />
+
+<div class="workdetail">
+
+<p style="margin-top:2em"><span class="worktitle">${c.work.title}</span> composed by ${h.link_to(c.work.composer.fullname(), h.url_for(controller='composer',action='list',id=c.work.composer.id))}</p>
+
+% if c.work.instruments:
+written for 
+<div class="instrumentation">
+<ul>
+% for instrument in c.work.instruments:
+<li><a href="/instrument/list/${instrument.id}" class="instrumentimage">${instrument.name}<span class="instrumentimage feature">${instrument.imagetag() | n}</span></a></li>
+% endfor
+</ul>
+</div>
+% endif
+
+% if c.work.key:
+in the key of 
+<ul><li>
+<a class="instrumentimage"  href="/key/list/${c.work.key.id}">${c.work.key.name}<span class="feature" style="background:#fff">${c.work.key.imagetag() | n}</span></a>
+</li></ul>
+% endif
+
+% if c.work.movements:
+in ${len(c.work.movements)} movements
+<ul>
+% for movement in c.work.movements:
+<li><span class="movementtitle">${h.link_to(movement.liststring(), h.url_for(controller='catalog',action='movementdetail',id=movement.id))} </span>
+
+% if movement.soundclips:
+<ul>
+% for soundclip in movement.soundclips:
+<li><a href="${soundclip.path}" type="audio/mpeg"></a>(Audio Sample)</li>
+% endfor
+</ul>
+% endif
+
+</li>
+
+% endfor
+</ul>
+% endif
+
+% if c.work.styles:
+in the style
+<ul>
+% for style in c.work.styles:
+ <li>${ h.link_to(style.name, h.url_for(controller='style',action='list',id=style.id) )}</li>
+% endfor
+</ul>
+% endif
+
+% if c.work.description:
+${c.work.description | n}
+% endif
+
+% if c.work.soundclips:
+soundclips:
+<ul>
+% for soundclip in c.work.soundclips:
+<li><a href="${soundclip.path}" type="audio/mpeg"></a></li>
+% endfor
+</ul>
+% endif
+
+% if c.work.image:
+<img src =${c.work.image} alt="c.work.title">
+% endif
+
+% if c.work.publications:
+<p>Associated to the publication${'s' if len(c.work.publications)>1 else ''} 
+<ul>
+% for publication in c.work.publications:
+<li><a href="/catalog/publicationdetail/${publication.id}">${publication.liststring()}</a></li>
+% endfor
+</ul>
+</p>
+% endif
+</div>
+
+
+
+
+
+<div class="addtocart transblack rounded shadowborder">
+This item not for individual purchase. 
+% if c.work.publications:
+<br />See the publication(s)
+<ul>
+% for publication in c.work.publications:
+<li><a href="/catalog/publicationdetail/${publication.id}">${publication.liststring()}</a></li>
+% endfor
+</ul>
+% endif
+</div>
+

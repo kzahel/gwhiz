@@ -1,0 +1,230 @@
+/* colors
+grey: #444241
+red: #943535
+links: #00f
+*/
+
+/* .ffscrollbarfix { position: absolute; top: 0; bottom: -1px; width: 1em; z-index: -1;} */
+html { overflow: -moz-scrollbars-vertical; } 
+html, body, ul { margin:0; padding:0 ; list-style:none;}
+a { text-decoration:none }
+a, a:visited { color: #ff9 }
+
+body {font-family:arial; text-align: center; }
+
+/* body {background: #000 url("/images/Piano_bw.jpg") no-repeat center top;} */
+
+body { background-color: #a5a5a5 }
+
+.clear:after { content:"."; visibility:hidden; display:block; height:0px; clear:both }
+
+.contentfooter { }
+.globalwrap { position:relative; max-width:900px; margin-left: auto; margin-right: auto; text-align:left; }
+.insideglobalwrap {  }
+.header { }
+.logo { float:left; margin: 0.5em;}
+.shadowborder { 
+border-style: solid;
+border-color: black;
+border-width: 0 0.3em 0.3em 0;
+}
+
+a img { border: 0}
+
+.header h1 { color: #dda; padding: 0; margin:0.25em;}
+.navwrap { }
+
+.cart {color: #fec; padding: .5em; z-index: 1; position: absolute; right:0}
+.cart ul { margin-left: 1em; list-style-image: url(/images/rest.png); }
+
+.nav { padding-top:0.5em; padding-bottom: 0.5em; margin: 0; margin-left:1em; }
+.nav li { display:inline; margin:0 0.3em 0 0;
+border-style: solid;
+border-color: black;
+border-width: 0 .2em 0 0;
+background: #943535}
+.nav a { padding: 0.5em;}
+.nav li:hover { background:#000; color:#fff }
+.nav li.current a { color:#fff ;}
+.nav li.current {background:#000}
+
+.subnav { float:left; margin:0; padding: 0; width:100%; 
+}
+.subnav li { background-color:#000; padding-left: 0.5em; padding-right: 0.5em; font-size:1.1em; float:left; display:inline; margin:0; margin-left: 1em; margin-top: 1em; }
+.subnav li {background: transparent url("/images/redtransp.png") repeat top left;
+
+}
+.subnav li a { color:#ff9 }
+.subnav li a:hover { color:#fff }
+
+.outsidecontent { }
+.transblack {background: transparent url("/images/contentbg.png") repeat scroll left top;}
+.content { 
+position: relative; 
+
+clear: both;
+padding: 1em;
+color: #fec;
+}
+
+.content h1 { color: #efa; margin: 0; padding-top; 0.5em; padding-bottom: 0.5em;}
+.content p { }
+
+.footer {
+background:#000;
+color:#fff;
+margin:0;
+padding: 0.5em;
+margin-bottom:2em;
+}
+.footer p { text-align:center; }
+
+.feature h1 { text-decoration: underline }
+
+
+
+.feature { border: 1px solid black; 
+float:right; position: relative;
+background: #333;
+text-align:center;
+padding: 0.5em;
+margin: 0.5em;
+}
+
+.greybox { border: 1px solid black; 
+float:left;
+background: #333;
+text-align:center;
+padding: 0.5em;
+margin: 0.5em;
+}
+
+
+.worktitle {
+font-size: 120% ;
+font-style: italic; }
+.movementtitle {
+font-size: 110% ;
+font-style: italic; }
+
+
+table, td
+{
+    border-color: #000;
+    border-style: solid;
+}
+
+table
+{
+    border-width: 0 0 1px 1px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+td
+{
+    margin: 0;
+    padding: 0.5em;
+    border-width: 1px 1px 0 0;
+    background-color: #333;
+}
+
+.content h1 { font-size: 130%; margin:0 ; padding:0 }
+.content h2 { font-size: 115% }
+
+
+.workdetail { position: relative; float: left }
+.addtocart { position: absolute; right: 0; top:0; padding: 1em ; margin: 0.5em;}
+.instrumentation li {display: inline}
+
+a.instrumentimage { position: relative }
+a.instrumentimage span {display: none; }
+a.instrumentimage:hover span {display: block; position: absolute; top: 1em; left: 1em; z-index:25}
+a.instrumentimage span img {border: 0}
+
+a.popupimage { position: relative }
+a.popupimage span {display: none; }
+a.popupimage:hover span {display: block; position: absolute; top: 0em; left: 10em; z-index:25}
+a.popupimage span img {border: 0}
+
+a.tooltip { position: relative }
+a.tooltip span {display: none; }
+a.tooltip:hover span {display: block; position: absolute; top: 2em; left: 1em;}
+a.tooltip span {background: #333; padding: 0.3em; font-size: 0.8em; color: #fff}
+
+
+.keycontainer { background-color: #fff }
+
+.content ul { list-style-image: url(/images/rest.png); margin-left: 1em; }
+.content ul li { margin-left: 1em; }
+
+/* images for the top of the page */
+.home { background:#232221 url("/images/handskeys.png") no-repeat top center; height: 300px; }
+.news { background:#232221 url("/images/news.jpg") no-repeat top center; height: 332px; }
+
+/* these are all the catalog */
+.catalog { background:#232221 url("/images/autograph.jpg") no-repeat top center; height: 300px; }
+.style { background:#232221 url("/images/autograph.jpg") no-repeat top center; height: 300px; }
+.instrument { background:#232221 url("/images/autograph.jpg") no-repeat top center; height: 300px; }
+.key { background:#232221 url("/images/autograph.jpg") no-repeat top center; height: 300px; }
+.composer { background:#232221 url("/images/autograph.jpg") no-repeat top center; height: 300px; }
+
+.bios { background:#232221 url("/images/handskeys2.jpg") no-repeat top center; height: 258px; }
+.services { background:#232221 url("/images/service.jpg") no-repeat top center; height: 408px; }
+.media { background:#232221 url("/images/stringsflash.jpg") no-repeat top center; height: 231px; } 
+.friends { background:#232221 url("/images/friend.jpg") no-repeat top center; height: 306px; }
+.contact { background:#232221 url("/images/black.jpg") no-repeat top center; height: 350px; }
+
+
+/*
+.magentadash { border: 1px dashed magenta; }
+.bluedash { border: 2px dashed blue; }
+.reddash { border: 2px dashed red; }
+.yellowdash { border: 2px dashed yellow; }
+.reddash { border: 2px dashed red; }
+.greendash { border: 1px dashed green; }
+*/
+.rounded {
+-webkit-border-radius: 1em;
+-moz-border-radius: 1em;
+border-radius: 1em;
+}
+.blackbg {background-color: #000 }
+
+.redbg {background: transparent url("/images/redtransp.png") repeat top left}
+
+.roundedtop {
+-moz-border-radius-topleft: 1em;
+-moz-border-radius-topright: 1em;
+-webkit-border-top-left-radius: 1em;
+-webkit-border-top-right-radius: 1em;
+border-top-left-radius: 1em;
+border-top-right-radius: 1em;
+}
+.roundedbottom {
+-moz-border-radius-bottomleft: 1em;
+-moz-border-radius-bottomright: 1em;
+-webkit-border-bottom-left-radius: 1em;
+-webkit-border-bottom-right-radius: 1em;
+border-bottom-left-radius: 1em;
+border-bottom-right-radius: 1em;
+}
+
+.navbg {background-color:#650010;}
+.navbg_current {background:#444241; }
+
+
+/*
+.sc { position:relative; top:15px; left:15px; }
+.s1 { position:relative; top:-7px; left:-7px; }
+.s2 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s3 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s4 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s5 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s6 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s7 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s8 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+.s9 { background: transparent url("/images/t.png") repeat scroll left top; position:relative; top:-1px; left:-1px; }
+
+
+*/

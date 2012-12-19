@@ -1,0 +1,9 @@
+<%inherit file="/base/index.html" />
+
+${h.form(h.url_for(controller='contact', action='index'), method='post')}
+% if c.email_msg:
+    <span class="error-message">${c.email_msg}</span><br />
+% endif
+E-mail Address: ${h.text('email', value=c.email_value)}
+                ${h.submit('index', 'Submit')}
+${h.end_form()}

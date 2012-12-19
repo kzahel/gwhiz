@@ -1,0 +1,12 @@
+${h.field(
+    "Title",
+    h.text(name='title'),
+    required=True,
+    field_desc = "Publication title"
+)}
+${h.field(
+    "Description",
+    h.textarea(name='description', rows=7, cols=40),
+    required=True,
+    field_desc = 'The text that will make up the body of the page'
+)}

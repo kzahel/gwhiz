@@ -1,0 +1,30 @@
+<%inherit file="/base/index.html" />
+
+
+<div class="feature">${c.artist.imagetag() | n}<br />${c.artist.fullname()}</div>
+% if c.bio:
+${c.bio | n}
+% endif
+
+
+<div class="feature">
+<p>Web address<br /><a href="${c.artist.website}">${c.artist.website}</a></p>
+% if c.artist.email:
+<p>email<br /><a href="mailto:${c.artist.email}">${c.artist.email}</a></p>
+% endif
+</div>
+
+% if c.featured:
+<div class="feature">
+<p>Featured Works</p>
+% for work in c.featured:
+<p>  <a href="/catalog/workdetail/${work.id}">${work.liststring()}</a><br />${work.blurb}</p>
+% endfor
+</div>
+% endif
+
+${c.artist.firstname} is featured as a performer for
+% for album in c.artist.albums:
+<a href="/catalog/albumdetail/${album.id}">${album.title}</a>, 
+% endfor
+in the catalog

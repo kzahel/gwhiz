@@ -1,0 +1,3 @@
+include gwhiz/config/deployment.ini_tmpl
+recursive-include gwhiz/public *
+recursive-include gwhiz/templates *

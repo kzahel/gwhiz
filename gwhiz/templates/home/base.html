@@ -1,0 +1,28 @@
+<%inherit file="/base/index.html" />
+
+<div class="feature rounded shadowborder" style="width:18em">
+<h1>Featured Publications</h1>
+
+% for publication in c.featuredpublications:
+ <p><a href="/catalog/publicationdetail/${publication.id}">${publication.gettitle()}</a>
+% if publication.getblurb():
+<br />${publication.getblurb()}
+% endif
+</p>
+% endfor
+
+</div>
+
+<p><strong>GWhiz Arts &amp; Sciences</strong> is a music publishing company. Founded in 1993,
+the GWhiz catalog includes popular song, Christian popular songs, and
+jazz music. Also listed in the catalog are contemporary music for solo
+piano, multiple pianos, voice and piano, chamber music, symphonic wind
+ensemble, and orchestra.</p>
+
+<p><strong>GWhiz Arts &amp; Sciences</strong> is affiliated with <a href="http://www.bmi.com">Broadcast Music Inc (BMI)</a> and
+provides music for use in television, motion pictures, and provides
+services such as orchestration, ghost-composing, and source cues.</p>
+
+<p><strong>GWhiz Arts &amp; Sciences</strong> also provides computer consulting, software
+design, website programming and architecture for clients such as
+Universal and Bank Of America.</p>

@@ -1,0 +1,25 @@
+<%inherit file="/work/base.html" />
+
+
+<%def name="subnav()">
+<div class="subnav">
+<ul>
+<li class="current"><a href="">featured</a></li>
+<li><a href="">a-z</a></li>
+</ul>
+</div>
+</%def>
+
+
+<%def name="heading()">
+    <h1 class="main">Work List</h1>
+</%def>
+
+<ul id="titles">
+% for work in c.works:
+<li>
+    ${work.title} [${h.link_to('visit', h.url_for(controller='work', action='view',
+        id=work.id))}]
+</li>
+% endfor
+</ul>

@@ -1,0 +1,18 @@
+<%inherit file="/bios/base.html" />
+
+<ul id="titles">
+% for composer in c.composers:
+
+<li style="list-style-image:none">
+<a href="/bios/view/${composer.id}">
+<div class="greybox">
+<img style="vertical-align: text-top;" src="${composer.previewimage()}" />
+<br />
+${composer.fullname()}
+</div>
+</a>
+</li>
+
+% endfor
+</ul>
+

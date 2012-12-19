@@ -1,0 +1,1 @@
+nohup paster serve production.ini > /mnt/gwhiz.com/logfile.log 2>&1 &

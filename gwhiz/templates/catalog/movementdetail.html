@@ -1,0 +1,32 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>Movement detail: ${c.movement.title}</h2>
+
+
+
+
+
+
+
+<table border=1px>
+<tr><td>Movement title:</td>
+<td><p>${c.movement.title}</p></td></tr>
+<tr><td>Description:</td>
+<td><p>${c.movement.description}</p></td></tr>
+<tr><td>Part of work:</td>
+<td><p>${c.movement.work.title}</p></td></tr>
+
+% if c.movement.work.publications:
+<td colspan=2><p>
+In publications:
+<ul>
+% for pub in c.movement.work.publications:
+<li>
+<a href="${pub.getlink()}">${pub.liststring()}</a>
+</li>
+% endfor
+</ul>
+</p></td>
+% endif
+
+</table>

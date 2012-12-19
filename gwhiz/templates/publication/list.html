@@ -1,0 +1,14 @@
+<%inherit file="/base/index.html" />
+
+<%def name="heading()">
+    <h1 class="main">Publication List</h1>
+</%def>
+
+<ul id="titles">
+% for pub in c.pubs:
+<li>
+    ${pub.title} [${h.link_to('visit', h.url_for(controller='publication', action='view',
+        id=pub.id))}]
+</li>
+% endfor
+</ul>

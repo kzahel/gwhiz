@@ -1,0 +1,31 @@
+<%inherit file="/catalog/base.html" />
+
+<h2>Check out</h2>
+
+
+<table>
+<tr><td> Work </td> <td> Price </td></tr>
+% for work in c.cart:
+<tr><td> ${work.gettitle()} </td> <td> $${work.getprice()} </td></tr>
+% endfor
+<tr><td> Shipping &amp; Handling </td> <td> $5 </td></tr>
+</table>
+
+<p>Clicking below will transfer you to paypal's secure payment website.</p>
+
+<div class="greybox">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<div>
+<input type="hidden" name="cmd" value="_cart" />
+<input type="hidden" name="upload" value="1" />
+<input type="hidden" name="business" value="michaelw@pocketjazz.com" />
+% for n,obj in enumerate(c.cart):
+<input type="hidden" name="item_name_${n+1}" value="${obj.gettitle()}" />
+<input type="hidden" name="amount_${n+1}" value="${obj.getprice()}" />
+% endfor 
+<input type="hidden" name="item_name_${len(c.cart)+1}" value="Shipping/Handling" />
+<input type="hidden" name="amount_${len(c.cart)+1}" value="5" />
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit" alt="Buy Now!" />
+</div>
+</form> 
+</div>
